@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import '../../../public/css/index.pcss';
 export default class Index extends Component{
     constructor(props){
         super(props);
@@ -21,9 +22,14 @@ export default class Index extends Component{
     }
     render(){
         return(
-            <div>
-                这是首页：
-                Seconds:{this.state.seconds}
+            <div className="cont">
+                <div className="top">
+                    这是首页22222:
+                    <div className="bg">风景这里独好</div>
+                </div>
+                <div className="bottom">
+                    Seconds:{this.state.seconds}
+                </div>
             </div>
         )
     }

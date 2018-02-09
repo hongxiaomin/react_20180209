@@ -62,3 +62,45 @@
     会自动打开浏览器 http://localhost:8050/
     随便修改下保存，浏览器会自动热更新
     
+    
+# React多页面应用2（处理CSS及图片，引入postCSS，及图片处理等）
+
+##### 1.添加postCSS支持
+    npm i -D precss postcss-loader postcss-cssnext style-loader css-loader
+
+##### 2.配置postcss
+    根目录下 postcss.config.js
+    
+##### 3.配置webpack开发配置
+    config->webpack->webpack.dev.conf.js
+    新加了如下配置代码
+    {
+       test:/\.(css|pcss)$/,
+       loader:'style-loader?sourceMap!css-loader?sourceMap!postcss-loader?sourceMap',
+       exclude:/node_modules/
+    }
+    
+##### 4.新建index.pcss文件
+    app->public->css目录下
+
+##### 5.react组件 引入index.pcss文件
+    现在工程就支持postCSS了
+    
+##### 6.图片的处理  
+    原则上本地图片建议都放在背景里
+    添加依赖
+    npm i -D file-loader
+
+##### 7.修改webpack配置文件
+    config ->webpack -> webpack.dev.conf.js
+    新添加了如下配置代码
+    {
+       test:/\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
+       loader:'file-loader?name=[name].[ext]&outputPath='+webpackFile.resource+'/'
+    } 
+    
+##### 8.插入图片
+    修改index.pcss
+    app->public->css目录下
+    
+      
